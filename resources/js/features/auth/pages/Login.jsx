@@ -103,7 +103,8 @@ const Login = ({ className = "", ...props }) => {
 
   const handleRegisterRedirect = () => setMode("register");
   const handleForgotPassword = () => navigate("/forgot-password");
-  const handleSellerRedirect = () => navigate("/admin/login");
+  const handleSellerRedirect = () =>
+    window.open("/admin/login", "_blank", "noopener,noreferrer");
   const handleSellerSignUp = () => navigate("/seller/register");
   const handleClose = () => navigate(-1);
   const handleBackToLogin = () => setMode("login");
