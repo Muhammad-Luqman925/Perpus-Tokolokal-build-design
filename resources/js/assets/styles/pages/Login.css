@@ -1,0 +1,335 @@
+.halaman-login-user,
+.halaman-login-user * {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.halaman-login-user {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  background: linear-gradient(180deg, #d1e3fb 0%, #d7f0ca 100%);
+  color: #0b0f19;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.login-card {
+  flex: 1 1 auto;
+  display: flex;
+  height: 100vh;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.login-card__left {
+  flex: 0 0 54%;
+  background: transparent;
+  padding: clamp(3rem, 6vw, 4.5rem) clamp(4rem, 7vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  position: relative;
+  align-items: center;
+}
+
+.login-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: min(32rem, 100%);
+  margin: 0 auto;
+}
+
+.login-title {
+  font-size: clamp(2rem, 3vw, 2.45rem);
+  font-weight: 700;
+  margin: 0;
+  color: #0b172a;
+  margin-left: -16px;
+}
+
+.login-title__emoji {
+  font-size: 0.95em;
+}
+
+.login-subtitle {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+  line-height: 1.5;
+  color: rgba(11, 23, 42, 0.85);
+  max-width: 32rem;
+  margin-left: -16px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.7rem, 1.6vw, 1rem);
+  width: min(34rem, 100%);
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0f1d33;
+}
+
+.form-group input {
+  height: 52px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(11, 23, 42, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0 22px;
+  font-size: 0.98rem;
+  color: #0b172a;
+  box-shadow: 0 18px 36px rgba(11, 23, 42, 0.12);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: rgba(33, 96, 243, 0.55);
+  box-shadow: 0 24px 46px rgba(8, 59, 166, 0.15);
+}
+
+.form-group input::placeholder {
+  color: rgba(11, 22, 35, 0.45);
+}
+
+.form-helper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.4rem;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2160f3;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.link-button:hover {
+  color: #0f42c8;
+}
+
+.login-btn {
+  height: 56px;
+  border-radius: 16px;
+  border: none;
+  background: #08c254;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 24px 56px rgba(8, 194, 84, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.login-btn:hover {
+  background: #06ad4a;
+  box-shadow: 0 26px 60px rgba(6, 173, 74, 0.25);
+  transform: translateY(-1px);
+}
+
+.register-btn {
+  height: 56px;
+  border-radius: 22px;
+  border: none;
+  background: #075629;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 22px 50px rgba(6, 61, 29, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.register-btn:hover {
+  background: #064722;
+  box-shadow: 0 24px 54px rgba(6, 61, 29, 0.25);
+  transform: translateY(-1px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: rgba(11, 23, 42, 0.5);
+  text-transform: lowercase;
+  justify-content: center;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  max-width: 120px;
+  background: rgba(11, 23, 42, 0.2);
+}
+
+.seller-disclaimer {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(11, 23, 42, 0.75);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  width: min(34rem, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.seller-disclaimer--register {
+  gap: 0.6rem;
+}
+
+.seller-disclaimer .link-button {
+  font-weight: 600;
+}
+
+.seller-word {
+  font-weight: 700;
+  color: #0b172a;
+}
+
+.login-card__right {
+  flex: 0 0 46%;
+  position: relative;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-top-left-radius: clamp(3rem, 6vw, 4.5rem);
+  border-bottom-left-radius: clamp(3rem, 6vw, 4.5rem);
+  box-shadow: -15px 0 50px rgba(11, 23, 42, 0.08);
+}
+
+.close-button {
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 2rem);
+  right: clamp(1.5rem, 4vw, 2rem);
+  border: none;
+  background: rgba(12, 22, 39, 0.05);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: #0b172a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(12, 22, 39, 0.12);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+  .login-card {
+    flex-direction: column;
+  }
+
+  .login-card__left {
+    border-top-right-radius: clamp(2rem, 6vw, 3rem);
+    border-top-left-radius: clamp(2rem, 6vw, 3rem);
+    background: linear-gradient(180deg, rgba(209, 227, 251, 0.95) 0%, rgba(215, 240, 202, 0.9) 100%);
+  }
+
+  .login-card__left,
+  .login-card__right {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .login-card__right {
+    padding-top: clamp(3rem, 8vw, 4rem);
+    border-radius: 0 0 clamp(2rem, 6vw, 3rem) clamp(2rem, 6vw, 3rem);
+    box-shadow: 0 -8px 40px rgba(11, 23, 42, 0.08);
+  }
+
+  .close-button {
+    top: clamp(1rem, 5vw, 1.5rem);
+    right: clamp(1rem, 5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .halaman-login-user {
+    padding: clamp(1rem, 6vw, 1.75rem);
+  }
+
+  .login-card {
+    border-radius: 24px;
+  }
+
+  .login-card__left {
+    padding: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .form-group input {
+    height: 50px;
+  }
+
+  .login-btn,
+  .register-btn {
+    height: 50px;
+  }
+
+  .form-helper {
+    margin-top: 0.25rem;
+  }
+}
+
+.illustration__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.illustration__image {
+  width: min(460px, 100%);
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-height: 820px) {
+  .halaman-login-user {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .login-card {
+    height: auto;
+    min-height: 100vh;
+  }
+}

@@ -1,0 +1,205 @@
+.shipping-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  z-index: 50;
+}
+
+.shipping-modal__card {
+  width: min(420px, calc(100% - 2rem));
+}
+
+.shipping-details {
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 28px 64px -32px rgba(15, 23, 42, 0.35);
+  padding: 32px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.shipping-details__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.shipping-details__label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(71, 85, 105, 0.9);
+}
+
+.shipping-details__header h2 {
+  margin: 4px 0 0;
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.shipping-details__close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.shipping-details__close:hover {
+  background: rgba(15, 23, 42, 0.14);
+  transform: translateY(-1px);
+}
+
+.shipping-details__progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shipping-details__progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(71, 85, 105, 0.9);
+}
+
+.shipping-details__progress-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.35);
+  overflow: hidden;
+}
+
+.shipping-details__progress-fill {
+  display: block;
+  height: 100%;
+  background: #117e40;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+.shipping-details__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.shipping-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.shipping-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 46px;
+  width: 2px;
+  height: calc(100% - 46px);
+  background: rgba(148, 163, 184, 0.25);
+}
+
+.shipping-step__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid rgba(148, 163, 184, 0.4);
+  background: rgba(148, 163, 184, 0.12);
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.shipping-step__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shipping-step--completed .shipping-step__icon {
+  background: rgba(17, 126, 64, 0.12);
+  border-color: rgba(17, 126, 64, 0.45);
+  color: #117e40;
+}
+
+.shipping-step--completed .shipping-step__icon svg path:first-child {
+  fill: rgba(17, 126, 64, 0.08);
+}
+
+.shipping-step--current .shipping-step__icon {
+  background: rgba(17, 126, 64, 0.08);
+  border-color: rgba(17, 126, 64, 0.35);
+  color: rgba(17, 126, 64, 0.9);
+}
+
+.shipping-step__content h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.shipping-step__content p {
+  margin: 4px 0 0;
+  font-size: 0.92rem;
+  color: rgba(71, 85, 105, 0.78);
+  line-height: 1.5;
+}
+
+.shipping-step__content time {
+  margin-top: 6px;
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(99, 116, 150, 0.85);
+  font-weight: 500;
+}
+
+.shipping-step--completed .shipping-step__content time {
+  color: rgba(17, 126, 64, 0.9);
+}
+
+.shipping-step--upcoming .shipping-step__content h3 {
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.shipping-step--upcoming .shipping-step__icon {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: rgba(148, 163, 184, 0.65);
+}
+
+@media (max-width: 480px) {
+  .shipping-details {
+    padding: 28px 24px 32px;
+  }
+
+  .shipping-step {
+    gap: 14px;
+  }
+
+  .shipping-step:not(:last-child)::after {
+    left: 19px;
+  }
+}

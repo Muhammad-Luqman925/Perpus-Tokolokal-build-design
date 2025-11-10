@@ -1,0 +1,36 @@
+@import "../globals/vars.css";
+
+.button-property1-default {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.7rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: #08c254;
+    color: #ffffff;
+    font-family: var(--font-family-base);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    letter-spacing: 0.01em;
+}
+
+.button-property1-default:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(8, 194, 84, 0.25);
+    background: #07b34c;
+}
+
+.button-property1-default:active {
+    transform: translateY(0);
+    box-shadow: none;
+    background: #069944;
+}
+
+.button-property1-default:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+}

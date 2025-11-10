@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Brand palette */
+  --color-primary-50: #e9fcf1;
+  --color-primary-100: #baf7d4;
+  --color-primary-200: #98f3c0;
+  --color-primary-300: #69eea3;
+  --color-primary-400: #4cea91;
+  --color-primary-500: #1fe575;
+  --color-primary-600: #1cd06a;
+  --color-primary-700: #16a353;
+  --color-primary-800: #117e40;
+  --color-primary-900: #0d6031;
+  --color-surface: #ffffff;
+  --color-surface-soft: rgba(255, 255, 255, 0.65);
+  --color-text-strong: #1e1e1e;
+  --color-text-base: rgba(32, 35, 43, 0.85);
+  --color-text-muted: rgba(60, 60, 67, 0.6);
+  --color-border-soft: rgba(17, 126, 64, 0.12);
+  --color-surface-tint: #f2f4ff;
+  --color-surface-strong: rgba(255, 255, 255, 0.92);
+  --color-accent-blue: #2d4ae3;
+
+  /* Typography */
+  --font-family-base: "Poppins", "Inter", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.75rem;
+  --font-size-display: 3.5rem;
+  --line-height-tight: 1.1;
+  --line-height-base: 1.5;
+
+  /* Radius & shadow tokens */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --shadow-card: 0 22px 48px rgba(13, 96, 49, 0.12);
+  --shadow-elevated: 0 32px 72px rgba(13, 96, 49, 0.16);
+
+  /* Spacing scale */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+}

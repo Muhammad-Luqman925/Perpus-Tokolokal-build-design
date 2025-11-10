@@ -1,0 +1,259 @@
+.halaman-log-in-seller,
+.halaman-log-in-seller * {
+    box-sizing: border-box;
+}
+
+.halaman-log-in-seller {
+    background: linear-gradient(243.18deg, rgba(215, 225, 236, 1) 0%, rgba(197, 211, 181, 1) 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: 32px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.halaman-log-in-seller > .close-button {
+    position: absolute;
+    top: clamp(1.5rem, 4vw, 2rem);
+    right: clamp(1.5rem, 4vw, 2rem);
+    border: none;
+    background: rgba(12, 22, 39, 0.05);
+    color: #0b1627;
+    width: clamp(2.5rem, 4vw, 2.8rem);
+    height: clamp(2.5rem, 4vw, 2.8rem);
+    border-radius: 999px;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    line-height: 1;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.halaman-log-in-seller > .close-button:hover {
+    background: rgba(12, 22, 39, 0.12);
+    transform: rotate(90deg);
+}
+
+.halaman-log-in-seller .base-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: min(606px, 100%);
+    min-height: 591px;
+    position: relative;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    border: 1px solid white;
+}
+
+.halaman-log-in-seller .title-form-button-register {
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 524px;
+}
+
+.halaman-log-in-seller .title {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+}
+
+.halaman-log-in-seller .greetings {
+    color: var(--grays-black, #000000);
+    text-align: center;
+    font-family: var(--bold-39px-bold-font-family, "Inter-Bold", sans-serif);
+    font-size: var(--bold-39px-bold-font-size, 39px);
+    font-weight: var(--bold-39px-bold-font-weight, 700);
+}
+
+.halaman-log-in-seller .another-greetings {
+    color: #000000;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 120.31%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.halaman-log-in-seller .form-button-register-here {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.halaman-log-in-seller .form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+}
+
+.halaman-log-in-seller .email,
+.halaman-log-in-seller .password {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.halaman-log-in-seller .email2,
+.halaman-log-in-seller .kata-sandi {
+    color: var(--grays-black, #000000);
+    text-align: left;
+    font-family: var(--bold-16px-bold-font-family, "Inter-Bold", sans-serif);
+    font-size: var(--bold-16px-bold-font-size, 16px);
+    font-weight: var(--bold-16px-bold-font-weight, 700);
+}
+
+.halaman-log-in-seller .form-email,
+.halaman-log-in-seller .masukkan-kata-sandi {
+    border-radius: 15px;
+    border: 1px solid var(--labels-controls-secondary, #8c8c8c);
+    padding: 16px 23px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.halaman-log-in-seller .form-email:focus-within,
+.halaman-log-in-seller .masukkan-kata-sandi:focus-within {
+    border-color: rgba(12, 124, 51, 0.55);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 0 3px rgba(12, 124, 51, 0.12);
+}
+
+.halaman-log-in-seller .heading-1,
+.halaman-log-in-seller .password-input {
+    color: var(--labels-controls-secondary, #8c8c8c);
+    text-align: left;
+    font-family: var(--inter-16px-regular-font-family, "Inter-Regular", sans-serif);
+    font-size: var(--inter-16px-regular-font-size, 14px);
+    font-weight: var(--inter-16px-regular-font-weight, 400);
+    width: 100%;
+}
+
+.halaman-log-in-seller .form-email input,
+.halaman-log-in-seller .masukkan-kata-sandi input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font: inherit;
+    color: var(--grays-black, #000000);
+    background: transparent;
+}
+
+.halaman-log-in-seller input:-webkit-autofill,
+.halaman-log-in-seller input:-webkit-autofill:hover,
+.halaman-log-in-seller input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.45) inset;
+    -webkit-text-fill-color: #0b1627;
+    caret-color: #0b1627;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.halaman-log-in-seller input:-moz-autofill {
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.45) inset;
+    -moz-text-fill-color: #0b1627;
+    caret-color: #0b1627;
+}
+
+.halaman-log-in-seller .button-register-link {
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+    align-items: center;
+    width: 100%;
+}
+
+.halaman-log-in-seller .submit-button-instance {
+    background: #08c254 !important;
+    align-self: stretch !important;
+    flex-shrink: 0 !important;
+    height: 48px !important;
+    width: 100% !important;
+}
+
+.halaman-log-in-seller .text {
+    text-align: center;
+    font-family: var(--medium-16px-medium-font-family, "Inter-Medium", sans-serif);
+    font-size: var(--medium-16px-medium-font-size, 16px);
+    font-weight: var(--medium-16px-medium-font-weight, 400);
+}
+
+.halaman-log-in-seller .text-error {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.text-span {
+    color: var(--grays-black, #000000);
+    font-family: var(--medium-16px-medium-font-family, "Inter-Medium", sans-serif);
+    font-weight: var(--medium-16px-medium-font-weight, 500);
+}
+
+.text-span2 {
+    color: #08c254;
+    font-family: var(--medium-16px-medium-font-family, "Inter-Medium", sans-serif);
+    font-weight: var(--medium-16px-medium-font-weight, 500);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.forgot-password-link {
+    width: 100%;
+    display: flex;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.forgot-password-link .link-button {
+    border: none;
+    background: none;
+    padding: 0;
+    color: #087f39;
+    font-family: var(--medium-16px-medium-font-family, "Inter-Medium", sans-serif);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.forgot-password-link .link-button:hover {
+    color: #065f2a;
+}
+
+@media (max-width: 768px) {
+    .halaman-log-in-seller {
+        padding: 40px 20px;
+    }
+
+    .halaman-log-in-seller .title {
+        align-items: center;
+    }
+
+    .halaman-log-in-seller .greetings {
+        font-size: 32px;
+    }
+}

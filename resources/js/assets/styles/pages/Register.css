@@ -1,0 +1,246 @@
+.seller-register-page,
+.seller-register-page * {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.seller-register-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #d6e1ec 0%, #d3dcc3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3.8rem, 10vw, 8.5rem);
+  color: #10202b;
+  position: relative;
+}
+
+.seller-register-page > .close-button {
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 2rem);
+  right: clamp(1.5rem, 4vw, 2rem);
+  border: none;
+  background: rgba(12, 22, 39, 0.05);
+  color: #0b1627;
+  width: clamp(2.5rem, 4vw, 2.8rem);
+  height: clamp(2.5rem, 4vw, 2.8rem);
+  border-radius: 999px;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.seller-register-page > .close-button:hover {
+  background: rgba(12, 22, 39, 0.12);
+  transform: rotate(90deg);
+}
+
+.seller-register-page__intro {
+  flex: 1 1 40%;
+  max-width: 470px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.seller-register-page__logo {
+  display: block;
+  width: clamp(220px, 28vw, 280px);
+  height: auto;
+  object-fit: contain;
+}
+
+.seller-register-page__description {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+  line-height: 1.6;
+  font-weight: 600;
+  color: rgba(16, 32, 43, 0.78);
+}
+
+.seller-register-card {
+  flex: 0 0 560px;
+  max-width: 560px;
+  background: rgba(240, 244, 255, 0.3);
+  border-radius: 26px;
+  border: 2px solid white;
+  box-shadow: 0 18px 36px -20px rgba(17, 34, 51, 0.35);
+  padding: clamp(2rem, 4vw, 2.7rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.seller-register-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.seller-register-card__header h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(16, 32, 43, 0.94);
+}
+
+.seller-register-card__toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-radius: 22px;
+  border: 1px solid #c5d0db;
+  overflow: hidden;
+  background: #dde6f0;
+}
+
+.seller-register-card__toggle button {
+  border: none;
+  background: transparent;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(16, 32, 43, 0.65);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seller-register-card__toggle button:not(.is-active) {
+  background: #fbfdff;
+  color: rgba(16, 32, 43, 0.7);
+}
+
+.seller-register-card__toggle button.is-active {
+  background: #1c7c2a;
+  color: #ffffff;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.seller-register-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.seller-register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(16, 32, 43, 0.88);
+}
+
+.seller-register-field > input {
+  border-radius: 12px;
+  border: 1px solid #c7d2df;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  background: rgba(240, 244, 255, 0.4);
+  color: rgba(16, 32, 43, 0.9);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seller-register-field > input::placeholder {
+  color: rgba(16, 32, 43, 0.45);
+}
+
+.seller-register-field > input:focus {
+  border-color: rgba(28, 124, 42, 0.6);
+  box-shadow: 0 0 0 3px rgba(28, 124, 42, 0.18);
+}
+
+.seller-register-field--inline label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(16, 32, 43, 0.88);
+}
+
+.seller-register-field__input {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border-radius: 12px;
+  border: 1px solid #c7d2df;
+  background: rgba(240, 244, 255, 0.4);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.seller-register-field__input input {
+  border: none;
+  padding: 14px 18px;
+  background: transparent;
+  font-size: 1rem;
+  color: rgba(16, 32, 43, 0.9);
+}
+
+.seller-register-field__input:focus-within {
+  border-color: rgba(28, 124, 42, 0.6);
+  box-shadow: 0 0 0 3px rgba(28, 124, 42, 0.18);
+}
+
+.seller-register-field__action {
+  border: none;
+  padding: 0 20px;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(28, 124, 42, 0.9);
+  cursor: pointer;
+}
+
+.seller-register-card__submit {
+  width: 100% !important;
+  height: 46px !important;
+  background: #1c7c2a !important;
+  border: 1px solid #186f25 !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 18px -12px rgba(28, 124, 42, 0.8) !important;
+}
+
+.seller-register-card__disclaimer {
+  margin: 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(16, 32, 43, 0.62);
+  line-height: 1.6;
+}
+
+.seller-register-card__disclaimer button {
+  border: none;
+  background: none;
+  padding: 0;
+  color: rgba(28, 124, 42, 0.9);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .seller-register-page {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .seller-register-page__intro {
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .seller-register-page {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .seller-register-card {
+    width: 100%;
+    padding: 1.75rem 1.5rem;
+  }
+}
