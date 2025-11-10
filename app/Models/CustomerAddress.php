@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
 class CustomerAddress extends Model
 {
     use HasFactory;
@@ -37,5 +37,11 @@ class CustomerAddress extends Model
     public function getDisplayLabelAttribute()
     {
         return $this->label ?: 'Address #' . $this->id;
+    }
+    protected function fullAddressString(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => "{$this->address_line}, {$this->city}, {$this->state}, {$this->country}, {$this->postal_code}",
+        );
     }
 }

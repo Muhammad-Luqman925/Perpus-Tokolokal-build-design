@@ -28,4 +28,5 @@ class CustomerPaymentMethod extends Model
     {
         return $this->belongsTo(PaymentChannel::class, 'payment_channel_id');
     }
+    
 }

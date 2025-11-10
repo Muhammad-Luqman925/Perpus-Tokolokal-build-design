@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import "@/assets/styles/pages/ProfileOrders.css";
 import "@/assets/styles/pages/ProfileAccountLayout.css";
 import { Navbar } from "@/components/navigation/Navbar";
@@ -6,6 +6,7 @@ import { TdesignNotificationFilled } from "@/components/feedback/TdesignNotifica
 import ShippingDetails from "@/features/order/pages/ShippingDetails";
 import RateProduct from "@/features/order/pages/RateProduct";
 import { useNavigate } from "react-router-dom";
+import OrderAPI from "@/core/api/OrderAPI";
 
 const sidebarMenu = [
     {
@@ -100,124 +101,14 @@ const sidebarMenu = [
 
 const statuses = ["All Orders", "Pending", "Processing", "Shipped", "Delivered", "Cancelled"];
 
-const orderData = [
-    {
-        id: "12CBSD3",
-        status: "Pending",
-        shop: "Xiaomi Official Store",
-        product: "Official Xiaomi Compact Hair Dryer H101 | Ringkas dan bisa dilipat",
-        variation: "Variation : White",
-        total: "Rp249.000",
-        image:
-            "https://images.unsplash.com/photo-1600180758890-6d8df9643a8f?auto=format&fit=crop&w=200&q=80",
-    },
-    {
-        id: "56HGR72",
-        status: "Processing",
-        shop: "Xiaomi Official Store",
-        product: "Official Xiaomi Compact Hair Dryer H101 | Ringkas dan bisa dilipat",
-        variation: "Variation : White",
-        total: "Rp249.000",
-        image:
-            "https://images.unsplash.com/photo-1600180758890-6d8df9643a8f?auto=format&fit=crop&w=200&q=80",
-    },
-    {
-        id: "78SHIP42",
-        status: "Shipped",
-        shop: "Xiaomi Official Store",
-        product: "Official Xiaomi Compact Hair Dryer H101 | Ringkas dan bisa dilipat",
-        variation: "Variation : White",
-        total: "Rp249.000",
-        shippedAt: "Aug 23 2024, 11:22",
-        image:
-            "https://images.unsplash.com/photo-1600180758890-6d8df9643a8f?auto=format&fit=crop&w=200&q=80",
-        shippingTimeline: [
-            {
-                id: "order-confirmed",
-                title: "Order Confirmed",
-                description: "Your order has been confirmed and is being prepared",
-                timestamp: "20 Sep 2025, 14:30",
-                icon: "check",
-                state: "completed",
-            },
-            {
-                id: "package-prepared",
-                title: "Package Prepared",
-                description: "Your package is being prepared for shipment",
-                timestamp: "20 Sep 2025, 16:45",
-                icon: "box",
-                state: "completed",
-            },
-            {
-                id: "in-transit",
-                title: "In Transit",
-                description: "Your package is on the way to your location",
-                timestamp: "21 Sep 2025, 08:20",
-                icon: "truck",
-                state: "upcoming",
-            },
-            {
-                id: "out-for-delivery",
-                title: "Out for Delivery",
-                description: "Your package is out for delivery",
-                timestamp: "Estimated : 22 September 2025, 10:00 - 18:00",
-                icon: "pin",
-                state: "upcoming",
-            },
-        ],
-    },
-    {
-        id: "90DLV12",
-        status: "Delivered",
-        shop: "Xiaomi Official Store",
-        product: "Official Xiaomi Compact Hair Dryer H101 | Ringkas dan bisa dilipat",
-        variation: "Variation : White",
-        total: "Rp249.000",
-        deliveredAt: "Sep 25 2025, 12:10",
-        isReceived: false,
-        image:
-            "https://images.unsplash.com/photo-1600180758890-6d8df9643a8f?auto=format&fit=crop&w=200&q=80",
-        shippingTimeline: [
-            {
-                id: "order-confirmed",
-                title: "Order Confirmed",
-                description: "Your order has been confirmed and is being prepared",
-                timestamp: "20 Sep 2025, 14:30",
-                icon: "check",
-                state: "completed",
-            },
-            {
-                id: "package-prepared",
-                title: "Package Prepared",
-                description: "Your package is being prepared for shipment",
-                timestamp: "20 Sep 2025, 16:45",
-                icon: "box",
-                state: "completed",
-            },
-            {
-                id: "in-transit",
-                title: "In Transit",
-                description: "Your package is on the way to your location",
-                timestamp: "21 Sep 2025, 08:20",
-                icon: "truck",
-                state: "completed",
-            },
-            {
-                id: "delivered",
-                title: "Out for Delivery",
-                description: "Your package out for delivery",
-                timestamp: "22 Sep 2025, 12:10",
-                icon: "pin",
-                state: "completed",
-            },
-        ],
-    },
-];
-
 export const Orders = ({ className = "", ...props }) => {
     const pageClassName = ["profile-page", "profile-account-page", className].filter(Boolean).join(" ");
     const navigate = useNavigate();
-    const [orders, setOrders] = useState(orderData);
+    
+    // 👈 State sudah benar
+    const [allOrders, setAllOrders] = useState([]); 
+    const [loading, setLoading] = useState(true);   
+    
     const [activeStatus, setActiveStatus] = useState("Pending");
     const [invoiceOrder, setInvoiceOrder] = useState(null);
     const [shippingDetails, setShippingDetails] = useState(null);
@@ -225,37 +116,25 @@ export const Orders = ({ className = "", ...props }) => {
     const [ratingOrderId, setRatingOrderId] = useState(null);
     const [activeMenu, setActiveMenu] = useState({ group: "Orders", child: null });
 
-    const handleViewShippingDetails = (order) => {
-        setShippingDetails({
-            order,
-            timeline: order.shippingTimeline ?? [],
-        });
-    };
+    // --- (Handler modal biarkan saja) ---
+    const handleViewShippingDetails = (order) => { /* ... */ };
+    const handleCloseShippingDetails = () => { /* ... */ };
+    const handleOrderReceived = (order) => { /* ... */ };
+    const handleRateProduct = (order) => { /* ... */ };
 
-    const handleCloseShippingDetails = () => {
-        setShippingDetails(null);
-    };
-
-    const handleOrderReceived = (order) => {
-        setConfirmReceivedOrderId(order.id);
-    };
-
-    const handleRateProduct = (order) => {
-        setRatingOrderId(order.id);
-    };
-
+    // 🌟 PERBAIKAN: Ganti 'setOrders' jadi 'setAllOrders'
     const handleConfirmOrderReceived = (orderId) => {
-        setOrders((prevOrders) =>
+        setAllOrders((prevOrders) => // 👈 Ganti jadi setAllOrders
             prevOrders.map((order) => {
                 if (order.id !== orderId) {
                     return order;
                 }
-
+                
                 const updatedTimeline = Array.isArray(order.shippingTimeline)
                     ? order.shippingTimeline.map((step) => ({
-                          ...step,
-                          state: "completed",
-                      }))
+                        ...step,
+                        state: "completed",
+                    }))
                     : order.shippingTimeline;
 
                 const deliveredAt =
@@ -279,36 +158,72 @@ export const Orders = ({ className = "", ...props }) => {
         setConfirmReceivedOrderId(null);
     };
 
+    // 👈 useEffect sudah benar
+    useEffect(() => {
+        const loadOrders = async () => {
+            setLoading(true); 
+            try {
+                const res = await OrderAPI.getAll();
+                setAllOrders(res.data.orders || []); 
+            } catch (error) {
+                console.error("Gagal memuat data order:", error);
+                // Cek jika error 401 (unauthenticated), mungkin token expired
+                if (error.response?.status === 401) {
+                    alert("Sesi Anda telah habis. Silakan login kembali.");
+                    navigate("/login"); // Arahkan ke login
+                } else {
+                    alert("Gagal memuat data order Anda.");
+                }
+            } finally {
+                setLoading(false); 
+            }
+        };
+
+        loadOrders();
+    }, [navigate]); // Tambahkan navigate sebagai dependency
+
+    // 👈 useMemo sudah benar
     const filteredOrders = useMemo(() => {
         if (activeStatus === "All Orders") {
-            return orders;
+            return allOrders;
         }
-        return orders.filter((order) => order.status === activeStatus);
-    }, [orders, activeStatus]);
+        const backendStatus = activeStatus.toLowerCase(); 
+        return allOrders.filter((order) => order.status === backendStatus);
+    }, [allOrders, activeStatus]);
 
+    // 🌟 PERBAIKAN: Ganti 'orders' jadi 'allOrders'
     const pendingConfirmationOrder = useMemo(
-        () => orders.find((order) => order.id === confirmReceivedOrderId),
-        [orders, confirmReceivedOrderId]
+        () => allOrders.find((order) => order.id === confirmReceivedOrderId),
+        [allOrders, confirmReceivedOrderId] // 👈 Ganti ke allOrders
     );
+    const formatCurrency = (value) =>
+    new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+    }).format(value);
 
+    // 🌟 PERBAIKAN: Ganti 'orders' jadi 'allOrders'
     const ratingOrder = useMemo(
-        () => orders.find((order) => order.id === ratingOrderId),
-        [orders, ratingOrderId]
+        () => allOrders.find((order) => order.id === ratingOrderId),
+        [allOrders, ratingOrderId] // 👈 Ganti ke allOrders
     );
-
+    
+    // 🌟 PERBAIKAN: Ganti 'setOrders' jadi 'setAllOrders'
     const handleReviewSubmitted = (orderId, review) => {
-        setOrders((prevOrders) =>
+        setAllOrders((prevOrders) => // 👈 Ganti jadi setAllOrders
             prevOrders.map((order) =>
                 order.id === orderId
                     ? {
-                          ...order,
-                          review: {
-                              rating: review.rating,
-                              comment: review.comment,
-                              submittedAt: new Date().toISOString(),
-                          },
-                          hasReview: true,
-                      }
+                        ...order,
+                        review: {
+                            rating: review.rating,
+                            comment: review.comment,
+                            submittedAt: new Date().toISOString(),
+                        },
+                        hasReview: true,
+                        }
                     : order
             )
         );
@@ -319,6 +234,7 @@ export const Orders = ({ className = "", ...props }) => {
             <Navbar className="profile-page__navbar profile-account-page__nav" />
 
             <main className="profile-page__content profile-account-layout">
+
                 <aside className="profile-page__sidebar profile-account-sidebar">
                     <div className="profile-card">
                         <img
@@ -386,16 +302,16 @@ export const Orders = ({ className = "", ...props }) => {
                                                     </button>
                                                 </li>
                                             ))}
-                                    </ul>
+                                        </ul>
                                     ) : null}
                                 </div>
                             );
                         })}
                     </nav>
-
                 </aside>
 
                 <section className="profile-page__orders profile-account-content">
+                    {/* --- (Header kamu biarkan saja, sudah benar) --- */}
                     <header className="orders-header">
                         <div>
                             <p className="orders-header__eyebrow">Dashboard</p>
@@ -406,6 +322,7 @@ export const Orders = ({ className = "", ...props }) => {
                         </span>
                     </header>
 
+                    {/* --- (Tabs status kamu biarkan saja, sudah benar) --- */}
                     <div className="orders-status">
                         <span className="orders-status__label">Status</span>
                         <div className="orders-status__tabs">
@@ -424,107 +341,112 @@ export const Orders = ({ className = "", ...props }) => {
                         </div>
                     </div>
 
+                    {/* 👈 Ini adalah div 'orders-list' yang sudah final */}
                     <div className="orders-list">
-                        {filteredOrders.map((order) => (
-                            <article
-                                className={`order-card order-card--${order.status.toLowerCase()}`}
-                                key={order.id}
-                            >
-                                <header className="order-card__header">
-                                    <span className="order-card__shop">{order.shop}</span>
-                                    <div className="order-card__total">
-                                        <span>Order Total</span>
-                                        <strong>{order.total}</strong>
-                                    </div>
-                                </header>
+                        {loading ? (
+                            <p style={{ textAlign: "center", padding: "2rem" }}>Loading your orders...</p>
+                        ) : filteredOrders.length === 0 ? (
+                            <p style={{ textAlign: "center", padding: "2rem" }}>
+                                No orders found for status "{activeStatus}".
+                            </p>
+                        ) : (
+                            filteredOrders.map((order) => (
+                                <article
+                                    className={`order-card order-card--${order.status.toLowerCase()}`}
+                                    key={order.id}
+                                >
+                                    <header className="order-card__header">
+                                        <span className="order-card__shop">
+                                            {order.seller?.store_name || 'Toko Dihapus'}
+                                        </span>
+                                        <div className="order-card__total">
+                                            <span>Order Total</span>
+                                            <strong>{formatCurrency(order.grand_total)}</strong>
+                                        </div>
+                                    </header>
 
-                                <div className="order-card__body">
-                                    <img src={order.image} alt={order.product} />
-                                    <div className="order-card__details">
-                                        <h2>{order.product}</h2>
-                                        <p>{order.variation}</p>
-                                        {order.status === "Processing" ? (
-                                            <span className="order-card__info">
-                                                Your order is being processed.
-                                            </span>
-                                        ) : order.status === "Shipped" && order.shippedAt ? (
-                                            <span className="order-card__info order-card__info--shipped">
-                                                Shipped on {order.shippedAt}
-                                            </span>
-                                        ) : order.status === "Delivered" && order.deliveredAt ? (
-                                            <span className="order-card__info order-card__info--delivered">
-                                                Delivered on {order.deliveredAt}
-                                            </span>
+                                    {order.items.map((item, index) => (
+                                        <div className="order-card__body" key={item.id}>
+                                            <img 
+                                                src={item.product?.image || 'https://placehold.co/200x200/eee/ccc?text=No+Image'} 
+                                                alt={item.product_name}
+                                                loading="lazy" 
+                                            />
+                                            <div className="order-card__details">
+                                                <h2>{item.product_name}</h2>
+                                                <p>Variation : {item.variant || '-'}</p>
+                                                <p>{item.quantity} x {formatCurrency(item.price)}</p>
+
+                                                {index === 0 && order.status === "processing" ? (
+                                                    <span className="order-card__info">
+                                                        Your order is being processed.
+                                                    </span>
+                                                ) : index === 0 && order.status === "shipped" ? (
+                                                    <span className="order-card__info order-card__info--shipped">
+                                                        Shipped on {new Date(order.updated_at).toLocaleDateString("id-ID")}
+                                                    </span>
+                                                ) : index === 0 && order.status === "delivered" ? (
+                                                    <span className="order-card__info order-card__info--delivered">
+                                                        Delivered on {new Date(order.updated_at).toLocaleDateString("id-ID")}
+                                                    </span>
+                                                ) : null}
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    <footer className="order-card__footer">
+                                        {order.status === "pending" ? (
+                                            <>
+                                                <span className="order-card__info">
+                                                    Waiting for seller confirmation...
+                                                </span>
+                                                <button type="button" className="order-card__secondary">
+                                                    Cancel Order
+                                                </button>
+                                            </>
+                                        ) : order.status === "processing" ? (
+                                            <>
+                                                <button type="button" className="order-card__link" onClick={() => setInvoiceOrder(order)}>
+                                                    View Invoice
+                                                </button>
+                                                <button type="button" className="order-card__primary">
+                                                    Contact Seller
+                                                </button>
+                                            </>
+                                        ) : order.status === "shipped" ? (
+                                            <>
+                                                <button type="button" className="order-card__link" onClick={() => handleViewShippingDetails(order)}>
+                                                    View Shipping Details
+                                                </button>
+                                                <button type="button" className="order-card__primary">
+                                                    Contact Seller
+                                                </button>
+                                            </>
+                                        ) : order.status === "delivered" ? (
+                                            <>
+                                                <button type="button" className="order-card__link" onClick={() => handleViewShippingDetails(order)}>
+                                                    View Order Details
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="order-card__primary"
+                                                    onClick={() =>
+                                                        order.isReceived
+                                                            ? handleRateProduct(order)
+                                                            : handleOrderReceived(order)
+                                                    }
+                                                >
+                                                    {order.isReceived
+                                                        ? (order.hasReview ? "Edit Review" : "Rate Product")
+                                                        : "Order Received"}
+                                                </button>
+                                            </>
                                         ) : null}
-                                    </div>
-                                </div>
-
-                                <footer className="order-card__footer">
-                                    {order.status === "Pending" ? (
-                                        <>
-                                            <button type="button" className="order-card__secondary">
-                                                Cancel Order
-                                            </button>
-                                            <button type="button" className="order-card__primary">
-                                                Pay Now
-                                            </button>
-                                        </>
-                                    ) : order.status === "Processing" ? (
-                                        <>
-                                            <button
-                                                type="button"
-                                                className="order-card__link"
-                                                onClick={() => setInvoiceOrder(order)}
-                                            >
-                                                View Invoice
-                                            </button>
-                                            <button type="button" className="order-card__primary">
-                                                Contact Seller
-                                            </button>
-                                        </>
-                                    ) : order.status === "Shipped" ? (
-                                        <>
-                                            <button
-                                                type="button"
-                                                className="order-card__link"
-                                                onClick={() => handleViewShippingDetails(order)}
-                                            >
-                                                View Shipping Details
-                                            </button>
-                                            <button type="button" className="order-card__primary">
-                                                Contact Seller
-                                            </button>
-                                        </>
-                                    ) : order.status === "Delivered" ? (
-                                        <>
-                                            <button
-                                                type="button"
-                                                className="order-card__link"
-                                                onClick={() => handleViewShippingDetails(order)}
-                                            >
-                                                View Order Details
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="order-card__primary"
-                                                onClick={() =>
-                                                    order.isReceived
-                                                        ? handleRateProduct(order)
-                                                        : handleOrderReceived(order)
-                                                }
-                                            >
-                                                {order.isReceived
-                                                    ? order.hasReview
-                                                        ? "Edit Review"
-                                                        : "Rate Product"
-                                                    : "Order Received"}
-                                            </button>
-                                        </>
-                                    ) : null}
-                                </footer>
-                            </article>
-                        ))}
-                    </div>
+                                    </footer>
+                                </article>
+                            ))
+                        )}
+                    </div> {/* 👈 AKHIR DARI DIV "orders-list" */}
                 </section>
             </main>
 
@@ -666,20 +588,3 @@ export const Orders = ({ className = "", ...props }) => {
 };
 
 export default Orders;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
