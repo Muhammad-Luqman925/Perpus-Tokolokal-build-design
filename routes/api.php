@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\CustomerPaymentMethodController;
 use App\Http\Controllers\Api\VoucherController;
 use App\Http\Controllers\Api\CustomerSessionController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\SellerRegistrationController;
 // 🔹 Tes sederhana
 Route::get('/test', function () {
     return response()->json(['message' => 'API is working!']);
@@ -19,6 +20,7 @@ Route::post('/customer/register', [CustomerAuthController::class, 'register']);
 Route::post('/customer/login', [CustomerAuthController::class, 'login']);
 Route::post('/customer/check-email', [CustomerAuthController::class, 'checkEmail']);
 Route::post('/customer/reset-password', [CustomerAuthController::class, 'resetPassword']);
+Route::post('/seller/register', [SellerRegistrationController::class, 'store']);
 Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [CustomerAuthController::class, 'logout']);
         Route::post('/change-password', [CustomerAuthController::class, 'changePassword']);

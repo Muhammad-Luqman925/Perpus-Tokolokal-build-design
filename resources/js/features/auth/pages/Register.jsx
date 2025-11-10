@@ -1,48 +1,55 @@
 import "@/assets/styles/pages/Register.css";
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ButtonProperty1Default } from "@/components/ui/ButtonProperty1Default";
 import ConfirmLeaveModal from "../components/ConfirmLeaveModal";
-
-const CONTACT_OPTIONS = [
-    {
-        id: "email",
-        label: "Use Email",
-        fieldLabel: "Email",
-        placeholder: "Insert email . . .",
-        type: "email",
-    },
-    {
-        id: "phone",
-        label: "Use Phone Numbers",
-        fieldLabel: "Phone Numbers",
-        placeholder: "Insert phone numbers . . .",
-        type: "tel",
-    },
-];
+import SellerAuthAPI from "@/core/api/sellerAuth.api";
 
 const Register = () => {
-    const location = useLocation();
     const navigate = useNavigate();
-    const [contactMethod, setContactMethod] = useState(() => {
-        const incoming = location.state?.contactMethod || location.state?.mode;
-        if (incoming === "email") {
-            return "email";
-        }
-        return "phone";
-    });
     const [showConfirmLeave, setShowConfirmLeave] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    useEffect(() => {
-        const incoming = location.state?.contactMethod || location.state?.mode;
-        if (incoming === "email" || incoming === "phone") {
-            setContactMethod(incoming);
-        }
-    }, [location.state]);
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate("/seller/login");
+
+        const formData = new FormData(event.currentTarget);
+        const storeName = (formData.get("store_name") || "").trim();
+        const email = (formData.get("email") || "").trim();
+        const password = (formData.get("password") || "").trim();
+        const confirmPassword = (formData.get("confirmPassword") || "").trim();
+
+        if (!email || !password || !confirmPassword) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Password and confirmation do not match.");
+            return;
+        }
+
+        const payload = {
+            store_name: storeName || null,
+            email,
+            password,
+        };
+
+        setIsSubmitting(true);
+        try {
+            await SellerAuthAPI.register(payload);
+            alert("Registration successful! Please login.");
+            navigate("/admin/login");
+        } catch (error) {
+            const backendErrors = error.response?.data?.errors;
+            const firstError =
+                (backendErrors && Object.values(backendErrors)[0]?.[0]) ||
+                error.response?.data?.message ||
+                "Failed to register seller.";
+            alert(firstError);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleClose = () => {
@@ -57,8 +64,6 @@ const Register = () => {
         setShowConfirmLeave(false);
         navigate(-1);
     };
-
-    const activeOption = CONTACT_OPTIONS.find((option) => option.id === contactMethod) ?? CONTACT_OPTIONS[0];
 
     return (
         <div className="seller-register-page">
@@ -77,30 +82,28 @@ const Register = () => {
             <section className="seller-register-card" aria-label="Register your Tokolokal store">
                 <header className="seller-register-card__header">
                     <h2>Register Your Store</h2>
-                    <div className="seller-register-card__toggle" role="tablist" aria-label="Choose registration method">
-                        {CONTACT_OPTIONS.map((option) => (
-                            <button
-                                key={option.id}
-                                type="button"
-                                className={contactMethod === option.id ? "is-active" : ""}
-                                aria-selected={contactMethod === option.id}
-                                onClick={() => setContactMethod(option.id)}
-                            >
-                                {option.label}
-                            </button>
-                        ))}
-                    </div>
                 </header>
 
                 <form className="seller-register-card__form" autoComplete="off" onSubmit={handleSubmit}>
-                    <label className="seller-register-field" htmlFor={`register-${activeOption.id}`}>
-                        <span>{activeOption.fieldLabel}</span>
+                    <label className="seller-register-field" htmlFor="register-store-name">
+                        <span>Store Name</span>
                         <input
-                            id={`register-${activeOption.id}`}
-                            name={activeOption.id}
-                            type={activeOption.type}
-                            placeholder={activeOption.placeholder}
+                            id="register-store-name"
+                            name="store_name"
+                            type="text"
+                            placeholder="Enter your store name..."
                             autoComplete="off"
+                        />
+                    </label>
+                    <label className="seller-register-field" htmlFor="register-email">
+                        <span>Email</span>
+                        <input
+                            id="register-email"
+                            name="email"
+                            type="email"
+                            placeholder="Insert email..."
+                            autoComplete="off"
+                            required
                         />
                     </label>
 
@@ -126,7 +129,12 @@ const Register = () => {
                         />
                     </label>
 
-                    <ButtonProperty1Default type="submit" text="Register" className="seller-register-card__submit" />
+                    <ButtonProperty1Default
+                        type="submit"
+                        text={isSubmitting ? "Registering..." : "Register"}
+                        className="seller-register-card__submit"
+                        disabled={isSubmitting}
+                    />
                 </form>
             </section>
 

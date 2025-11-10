@@ -5,11 +5,14 @@ namespace App\Filament\Pages\Auth;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
-use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class Login extends \Filament\Pages\Auth\Login
 {
+    public function getHeading(): string
+    {
+        return 'Log In';
+    }
     protected function getForms(): array
     {
         return [
@@ -27,10 +30,11 @@ class Login extends \Filament\Pages\Auth\Login
 
     protected function getIdentifierFormComponent(): Component
     {
-        return TextInput::make('identifier')
-            ->label('Email atau Nomor Telepon')
-            ->placeholder('Masukkan email atau nomor telepon')
+        return TextInput::make('email')
+            ->label('Email')
+            ->placeholder('Masukkan alamat email')
             ->required()
+            ->email()
             ->autofocus()
             ->autocomplete('username')
             ->extraInputAttributes(['tabindex' => 1]);
@@ -51,18 +55,8 @@ class Login extends \Filament\Pages\Auth\Login
 
     protected function getCredentialsFromFormData(array $data): array
     {
-        $identifier = Str::of((string) ($data['identifier'] ?? ''))->trim();
-
-        if (! $identifier->isEmpty() && $identifier->contains('@')) {
-            $field = 'email';
-            $value = $identifier->lower();
-        } else {
-            $field = 'phone_number';
-            $value = $identifier->replaceMatches('/[^0-9+]/', '');
-        }
-
         return [
-            $field => (string) $value,
+            'email' => (string) ($data['email'] ?? ''),
             'password' => $data['password'] ?? null,
         ];
     }
@@ -70,7 +64,7 @@ class Login extends \Filament\Pages\Auth\Login
     protected function throwFailureValidationException(): never
     {
         throw ValidationException::withMessages([
-            'data.identifier' => __('filament-panels::pages/auth/login.messages.failed'),
+            'data.email' => __('filament-panels::pages/auth/login.messages.failed'),
         ]);
     }
 }
