@@ -5,6 +5,17 @@ Proyek ini dirancang untuk mempermudah proses jual-beli produk lokal dengan tamp
 
 ---
 
+## Tim Pengembang
+
+| Nama | Peran | Jobdesk |
+|------|--------|----------|
+| **Muhammad Arifin Dafa** | Frontend Developer | Mengembangkan antarmuka pengguna menggunakan React, integrasi API, dan implementasi komponen dinamis dengan Tailwind. |
+| **Muhammad Luqman** | Backend Developer | Membangun REST API dengan Laravel, mengelola database dan autentikasi, serta integrasi dengan Filament untuk dashboard admin. |
+| **Allya Putri Ditya** | UI/UX Designer | Mendesain tampilan website di Figma, membuat wireframe, user flow, serta memastikan konsistensi visual dan kemudahan navigasi. |
+| **Muhammad Arsy Al-Fahd** | UI/UX Designer | Mengembangkan sistem warna, layout responsif, dan elemen interaktif berbasis user research untuk pengalaman pengguna yang optimal. |
+
+---
+
 ## Fitur Utama
 
 - **Autentikasi Pengguna**
@@ -152,17 +163,6 @@ dan frontend di `http://localhost:5173`
 ├─ jsconfig.json
 └─ README.md
 ```
-
----
-
-## Tim Pengembang
-
-| Nama | Peran | Jobdesk |
-|------|--------|----------|
-| **Muhammad Arifin Dafa** | Frontend Developer | Mengembangkan antarmuka pengguna menggunakan React, integrasi API, dan implementasi komponen dinamis dengan Tailwind. |
-| **Muhammad Luqman** | Backend Developer | Membangun REST API dengan Laravel, mengelola database dan autentikasi, serta integrasi dengan Filament untuk dashboard admin. |
-| **Allya Putri Ditya** | UI/UX Designer | Mendesain tampilan website di Figma, membuat wireframe, user flow, serta memastikan konsistensi visual dan kemudahan navigasi. |
-| **Muhammad Arsy Al-Fahd** | UI/UX Designer | Mengembangkan sistem warna, layout responsif, dan elemen interaktif berbasis user research untuk pengalaman pengguna yang optimal. |
 
 ---
 
