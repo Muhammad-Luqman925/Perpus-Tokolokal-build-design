@@ -77,169 +77,170 @@ Pastikan backend berjalan di `http://127.0.0.1:8000` dan frontend di `http://loc
 
 ```
 .
-app/
-  Filament/
-    Resources/
-      ProductResource.php
-      ProductResource/
-        Pages/
-          CreateProduct.php
-          EditProduct.php
-          ListProducts.php
-      Pages/
-        Auth/
-          Login.php
-  Http/
-    Controllers/
-      Api/
-        CartController.php
-        CheckoutController.php
-        CustomerAddressController.php
-        CustomerAuthController.php
-        CustomerPaymentMethodController.php
-        CustomerProfileController.php
-        CustomerSessionController.php
-        OrderController.php
-        ProductController.php
-        SellerRegistrationController.php
-        VoucherController.php
-    Controller.php
-  Models/
-    CartItem.php
-    Customer.php
-    CustomerAddress.php
-    CustomerPaymentMethod.php
-    CustomerSession.php
-    Order.php
-    OrderItem.php
-    OrderReview.php
-    OrderShipping.php
-    PaymentChannel.php
-    Product.php
-    User.php
-    Voucher.php
-  Providers/
-    AppServiceProvider.php
-  Services/
-    ShippingService.php
-bootstrap/
-config/
-database/
-  factories/
-  migrations/
-  seeders/
-    DatabaseSeeder.php
-    OrderDummySeeder.php
-    PaymentChannelSeeder.php
-    ProductSeeder.php
-    UserSeeder.php
-    VoucherSeeder.php
-public/
-  img/
-    Login.png
-    logo.png
-resources/
-  js/
-    assets/
-    components/
-      feedback/
-        TdesignNotificationFilled.jsx
-        TypcnFlash.jsx
-      icons/
-        HeroiconsUserGroupSolid.jsx
-        HumbleiconsShare.jsx
-        IconamoonHeart.jsx
-        IonSearch.jsx
-        MajesticonsCommentLine.jsx
-      layout/
-        Footer.jsx
-        Header.jsx
-      navigation/
-        Navbar.jsx
-      ui/
-        ButtonProperty1Default.jsx
-        ButtonProperty1Disabled.jsx
-    core/
-      api/
-        axios.js
-        auth.api.js
-        cart.api.js
-        checkout.api.js
-        customerAddress.api.js
-        customerOrder.api.js
-        customerPassword.api.js
-        customerPayment.api.js
-        customerProfile.api.js
-        customerSession.api.js
-        customerVoucher.api.js
-        OrderAPI.js
-        product.api.js
-        sellerAuth.api.js
-      constants/
-      hooks/
-      store/
-    features/
-      auth/
-        pages/
-          ForgotPassword.jsx
-          ForgotPasswordReset.jsx
-          Login.jsx
-          Register.jsx
-          SellerLogin.jsx
-      cart/
-        pages/
-          Cart.jsx
-          Checkout.jsx
-      community/
-        pages/
-          Chat.jsx
-          CommentSection.jsx
-          Community.jsx
-          CommunityDetail.jsx
-          CommunityNotifications.jsx
-      home/
-        pages/
-          Landing.jsx
-      order/
-        pages/
-      product/
-        pages/
-          Category.jsx
-          Dashboard.jsx
-          ProductPreview.jsx
-          coba.jsx
-      profile/
-        pages/
-          AccountAddress.jsx
-          AccountBankCards.jsx
-          AccountChangePassword.jsx
-          AccountPasswordReset.jsx
-          AccountProfile.jsx
-          Notifications.jsx
-          Orders.jsx
-          Privacy.jsx
-          Vouchers.jsx
-      support/
-        pages/
-          Contact.jsx
-    layouts/
-      MainLayout.jsx
-    routes/
-      ExternalRedirect.jsx
-      index.jsx
-routes/
-  api.php
-  console.php
-  web.php
-storage/
-tests/
-artisan
-composer.json
-package.json
-phpunit.xml
-vite.config.js
-jsconfig.json
-README.md
+├── app/
+│   ├── Filament/
+│   │   └── Resources/
+│   │       ├── ProductResource.php
+│   │       ├── ProductResource/
+│   │       │   └── Pages/
+│   │       │       ├── CreateProduct.php
+│   │       │       ├── EditProduct.php
+│   │       │       └── ListProducts.php
+│   │       └── Pages/
+│   │           └── Auth/
+│   │               └── Login.php
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Api/
+│   │   │   │   ├── CartController.php
+│   │   │   │   ├── CheckoutController.php
+│   │   │   │   ├── CustomerAddressController.php
+│   │   │   │   ├── CustomerAuthController.php
+│   │   │   │   ├── CustomerPaymentMethodController.php
+│   │   │   │   ├── CustomerProfileController.php
+│   │   │   │   ├── CustomerSessionController.php
+│   │   │   │   ├── OrderController.php
+│   │   │   │   ├── ProductController.php
+│   │   │   │   ├── SellerRegistrationController.php
+│   │   │   │   └── VoucherController.php
+│   │   │   └── Controller.php
+│   ├── Models/
+│   │   ├── CartItem.php
+│   │   ├── Customer.php
+│   │   ├── CustomerAddress.php
+│   │   ├── CustomerPaymentMethod.php
+│   │   ├── CustomerSession.php
+│   │   ├── Order.php
+│   │   ├── OrderItem.php
+│   │   ├── OrderReview.php
+│   │   ├── OrderShipping.php
+│   │   ├── PaymentChannel.php
+│   │   ├── Product.php
+│   │   ├── User.php
+│   │   └── Voucher.php
+│   ├── Providers/
+│   │   └── AppServiceProvider.php
+│   └── Services/
+│       └── ShippingService.php
+├── bootstrap/
+├── config/
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+│       ├── DatabaseSeeder.php
+│       ├── OrderDummySeeder.php
+│       ├── PaymentChannelSeeder.php
+│       ├── ProductSeeder.php
+│       ├── UserSeeder.php
+│       └── VoucherSeeder.php
+├── public/
+│   └── img/
+│       ├── Login.png
+│       └── logo.png
+├── resources/
+│   └── js/
+│       ├── assets/
+│       ├── components/
+│       │   ├── feedback/
+│       │   │   ├── TdesignNotificationFilled.jsx
+│       │   │   └── TypcnFlash.jsx
+│       │   ├── icons/
+│       │   │   ├── HeroiconsUserGroupSolid.jsx
+│       │   │   ├── HumbleiconsShare.jsx
+│       │   │   ├── IconamoonHeart.jsx
+│       │   │   ├── IonSearch.jsx
+│       │   │   ├── MajesticonsCommentLine.jsx
+│       │   │   └── ...
+│       │   ├── layout/
+│       │   │   ├── Footer.jsx
+│       │   │   └── Header.jsx
+│       │   ├── navigation/
+│       │   │   └── Navbar.jsx
+│       │   └── ui/
+│       │       ├── ButtonProperty1Default.jsx
+│       │       └── ButtonProperty1Disabled.jsx
+│       ├── core/
+│       │   ├── api/
+│       │   │   ├── axios.js
+│       │   │   ├── auth.api.js
+│       │   │   ├── cart.api.js
+│       │   │   ├── checkout.api.js
+│       │   │   ├── customerAddress.api.js
+│       │   │   ├── customerOrder.api.js
+│       │   │   ├── customerPassword.api.js
+│       │   │   ├── customerPayment.api.js
+│       │   │   ├── customerProfile.api.js
+│       │   │   ├── customerSession.api.js
+│       │   │   ├── customerVoucher.api.js
+│       │   │   ├── OrderAPI.js
+│       │   │   ├── product.api.js
+│       │   │   └── sellerAuth.api.js
+│       │   ├── constants/
+│       │   ├── hooks/
+│       │   └── store/
+│       ├── features/
+│       │   ├── auth/
+│       │   │   └── pages/
+│       │   │       ├── ForgotPassword.jsx
+│       │   │       ├── ForgotPasswordReset.jsx
+│       │   │       ├── Login.jsx
+│       │   │       ├── Register.jsx
+│       │   │       └── SellerLogin.jsx
+│       │   ├── cart/
+│       │   │   └── pages/
+│       │   │       ├── Cart.jsx
+│       │   │       └── Checkout.jsx
+│       │   ├── community/
+│       │   │   └── pages/
+│       │   │       ├── Chat.jsx
+│       │   │       ├── CommentSection.jsx
+│       │   │       ├── Community.jsx
+│       │   │       ├── CommunityDetail.jsx
+│       │   │       └── CommunityNotifications.jsx
+│       │   ├── home/
+│       │   │   └── pages/
+│       │   │       └── Landing.jsx
+│       │   ├── order/
+│       │   │   └── pages/
+│       │   ├── product/
+│       │   │   └── pages/
+│       │   │       ├── Category.jsx
+│       │   │       ├── Dashboard.jsx
+│       │   │       ├── ProductPreview.jsx
+│       │   │       └── coba.jsx
+│       │   ├── profile/
+│       │   │   └── pages/
+│       │   │       ├── AccountAddress.jsx
+│       │   │       ├── AccountBankCards.jsx
+│       │   │       ├── AccountChangePassword.jsx
+│       │   │       ├── AccountPasswordReset.jsx
+│       │   │       ├── AccountProfile.jsx
+│       │   │       ├── Notifications.jsx
+│       │   │       ├── Orders.jsx
+│       │   │       ├── Privacy.jsx
+│       │   │       └── Vouchers.jsx
+│       │   └── support/
+│       │       └── pages/
+│       │           └── Contact.jsx
+│       ├── layouts/
+│       │   └── MainLayout.jsx
+│       └── routes/
+│           ├── ExternalRedirect.jsx
+│           └── index.jsx
+├── routes/
+│   ├── api.php
+│   ├── console.php
+│   └── web.php
+├── storage/
+├── tests/
+├── artisan
+├── composer.json
+├── package.json
+├── phpunit.xml
+├── vite.config.js
+├── jsconfig.json
+└── README.md
 ```
 
 ---
