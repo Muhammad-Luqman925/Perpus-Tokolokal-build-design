@@ -25,6 +25,7 @@ import Notifications from "@/features/profile/pages/Notifications";
 import Privacy from "@/features/profile/pages/Privacy";
 import ForgotPassword from "@/features/auth/pages/ForgotPassword";
 import ForgotPasswordReset from "@/features/auth/pages/ForgotPasswordReset";
+import ExternalRedirect from "./ExternalRedirect";
 
 const routes = [
     {
@@ -46,6 +47,18 @@ const routes = [
     {
         path: "/seller/login",
         element: <SellerLogin />,
+    },
+    {
+        path: "/admin/login",
+        element: <ExternalRedirect to="/admin/login" />,
+    },
+    {
+        path: "/admin",
+        element: <ExternalRedirect to="/admin" />,
+    },
+    {
+        path: "/login-admin",
+        element: <ExternalRedirect to="/login-admin" />,
     },
     {
         path: "/seller/register",
@@ -148,9 +161,3 @@ const routes = [
 ];
 
 export default routes;
-
-
-
-
-
-
