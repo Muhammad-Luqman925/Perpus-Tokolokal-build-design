@@ -7,12 +7,12 @@ Proyek ini dirancang untuk mempermudah proses jual-beli produk lokal dengan tamp
 
 ## Tim Pengembang
 
-| Nama | Peran | Jobdesk |
-|------|--------|----------|
-| Muhammad Arifin Dafa - 2309116059 | Frontend Developer | Mengembangkan antarmuka pengguna menggunakan React, integrasi API, dan implementasi komponen dinamis dengan Tailwind. |
-| Muhammad Luqman - 2309116058| Backend Developer | Membangun REST API dengan Laravel, mengelola database dan autentikasi, serta integrasi dengan Filament untuk dashboard admin. |
-| Allya Putri Ditya - 2309116078 | UI/UX Designer | Mendesain tampilan website di Figma, membuat wireframe, user flow, serta memastikan konsistensi visual dan kemudahan navigasi. |
-| Muhammad Arsy Al-Fahd - 2309116079 | UI/UX Designer | Mengembangkan sistem warna, layout responsif, dan elemen interaktif berbasis user research untuk pengalaman pengguna yang optimal. |
+| Nama | NIM | Peran | Jobdesk |
+|------|------|--------|----------|
+| Muhammad Arifin Dafa | 2309116059 | Frontend Developer | Mengembangkan antarmuka pengguna menggunakan React, integrasi API, dan implementasi komponen dinamis dengan Tailwind. |
+| Muhammad Luqman | 2309116058 | Backend Developer | Membangun REST API dengan Laravel, mengelola database dan autentikasi, serta integrasi dengan Filament untuk dashboard admin. |
+| Allya Putri Ditya | 2309116078 | UI/UX Designer | Mendesain tampilan website di Figma, membuat wireframe, user flow, serta memastikan konsistensi visual dan kemudahan navigasi. |
+| Muhammad Arsy Al-Fahd | 2309116079 | UI/UX Designer | Mengembangkan sistem warna, layout responsif, dan elemen interaktif berbasis user research untuk pengalaman pengguna yang optimal. |
 
 ---
 
