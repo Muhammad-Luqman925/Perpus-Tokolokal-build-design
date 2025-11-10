@@ -248,3 +248,5 @@ Pastikan backend berjalan di `http://127.0.0.1:8000` dan frontend di `http://loc
 ## Preview Desain (Figma)
 https://www.figma.com/design/jhlqeUwaSG1pG9v88wX2uY/Lomba-iTech?node-id=0-1&t=4PEJuWBTtiO4bymq-1
 
+## Dokumentasi
+
