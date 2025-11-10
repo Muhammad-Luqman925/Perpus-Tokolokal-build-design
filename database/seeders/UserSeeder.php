@@ -10,8 +10,6 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-
-
         // 🏪 Seller (Toko)
         User::create([
             'name' => 'Luqman Store Owner',
