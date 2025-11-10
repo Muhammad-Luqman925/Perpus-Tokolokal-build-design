@@ -1,61 +1,252 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Nama Project : TokoLokal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+TokoLokal adalah website e-commerce yang dibangun menggunakan React (frontend) dan Laravel (backend).
+Proyek ini dirancang untuk mempermudah proses jual-beli produk lokal dengan tampilan yang modern.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tim Pengembang
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Nama | NIM | Peran | Jobdesk |
+|------|------|--------|----------|
+| Muhammad Arifin Dafa | 2309116059 | Frontend Developer | Mengembangkan antarmuka pengguna menggunakan React, integrasi API, dan implementasi komponen dinamis dengan Tailwind. |
+| Muhammad Luqman | 2309116058 | Backend Developer | Membangun REST API dengan Laravel, mengelola database dan autentikasi, serta integrasi dengan Filament untuk dashboard admin. |
+| Allya Putri Ditya | 2309116078 | UI/UX Designer | Mendesain tampilan website di Figma, membuat wireframe, user flow, serta memastikan konsistensi visual dan kemudahan navigasi. |
+| Muhammad Arsy Al-Fahd | 2309116079 | UI/UX Designer | Mengembangkan sistem warna, layout responsif, dan elemen interaktif berbasis user research untuk pengalaman pengguna yang optimal. |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Autentikasi Pengguna
+  - Pengguna dapat mendaftar, login, dan mengelola sesi secara aman (Laravel Sanctum).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Manajemen Produk
+  - Admin/Seller dapat CRUD produk: nama, harga, deskripsi, kategori, stok, dan gambar.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Keranjang Belanja (Cart)
+  - Tambah produk ke keranjang, lihat item tersimpan, dan total harga.
 
-## Laravel Sponsors
+- Checkout & Transaksi
+  - Pilih beberapa produk sekaligus, pilih metode pembayaran, dan tinjau total pesanan.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Dashboard Admin (Filament)
+  - Sistem administrasi berbasis Filament untuk pengelolaan data produk.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Tech Stack
 
-## Contributing
+| Bagian | Teknologi |
+|--------|-----------|
+| Frontend | React, Vite, Tailwind CSS |
+| Backend | Laravel 11, Filament, MySQL |
+| Autentikasi | Laravel Sanctum |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Instalasi & Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Clone Repository
+```bash
+git clone https://github.com/username/TokoLokal.git
+cd TokoLokal
+```
 
-## Security Vulnerabilities
+### 2. Setup Backend (Laravel)
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan storage:link
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Setup Frontend (Vite)
+```bash
+npm install
+npm run dev
+```
 
-## License
+Pastikan backend berjalan di `http://127.0.0.1:8000` dan frontend di `http://localhost:5173`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Struktur Direktori
+
+```
+.
+├── app/
+│   ├── Filament/
+│   │   └── Resources/
+│   │       ├── ProductResource.php
+│   │       ├── ProductResource/
+│   │       │   └── Pages/
+│   │       │       ├── CreateProduct.php
+│   │       │       ├── EditProduct.php
+│   │       │       └── ListProducts.php
+│   │       └── Pages/
+│   │           └── Auth/
+│   │               └── Login.php
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Api/
+│   │   │   │   ├── CartController.php
+│   │   │   │   ├── CheckoutController.php
+│   │   │   │   ├── CustomerAddressController.php
+│   │   │   │   ├── CustomerAuthController.php
+│   │   │   │   ├── CustomerPaymentMethodController.php
+│   │   │   │   ├── CustomerProfileController.php
+│   │   │   │   ├── CustomerSessionController.php
+│   │   │   │   ├── OrderController.php
+│   │   │   │   ├── ProductController.php
+│   │   │   │   ├── SellerRegistrationController.php
+│   │   │   │   └── VoucherController.php
+│   │   │   └── Controller.php
+│   ├── Models/
+│   │   ├── CartItem.php
+│   │   ├── Customer.php
+│   │   ├── CustomerAddress.php
+│   │   ├── CustomerPaymentMethod.php
+│   │   ├── CustomerSession.php
+│   │   ├── Order.php
+│   │   ├── OrderItem.php
+│   │   ├── OrderReview.php
+│   │   ├── OrderShipping.php
+│   │   ├── PaymentChannel.php
+│   │   ├── Product.php
+│   │   ├── User.php
+│   │   └── Voucher.php
+│   ├── Providers/
+│   │   └── AppServiceProvider.php
+│   └── Services/
+│       └── ShippingService.php
+├── bootstrap/
+├── config/
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+│       ├── DatabaseSeeder.php
+│       ├── OrderDummySeeder.php
+│       ├── PaymentChannelSeeder.php
+│       ├── ProductSeeder.php
+│       ├── UserSeeder.php
+│       └── VoucherSeeder.php
+├── public/
+│   └── img/
+│       ├── Login.png
+│       └── logo.png
+├── resources/
+│   └── js/
+│       ├── assets/
+│       ├── components/
+│       │   ├── feedback/
+│       │   │   ├── TdesignNotificationFilled.jsx
+│       │   │   └── TypcnFlash.jsx
+│       │   ├── icons/
+│       │   │   ├── HeroiconsUserGroupSolid.jsx
+│       │   │   ├── HumbleiconsShare.jsx
+│       │   │   ├── IconamoonHeart.jsx
+│       │   │   ├── IonSearch.jsx
+│       │   │   ├── MajesticonsCommentLine.jsx
+│       │   │   └── ...
+│       │   ├── layout/
+│       │   │   ├── Footer.jsx
+│       │   │   └── Header.jsx
+│       │   ├── navigation/
+│       │   │   └── Navbar.jsx
+│       │   └── ui/
+│       │       ├── ButtonProperty1Default.jsx
+│       │       └── ButtonProperty1Disabled.jsx
+│       ├── core/
+│       │   ├── api/
+│       │   │   ├── axios.js
+│       │   │   ├── auth.api.js
+│       │   │   ├── cart.api.js
+│       │   │   ├── checkout.api.js
+│       │   │   ├── customerAddress.api.js
+│       │   │   ├── customerOrder.api.js
+│       │   │   ├── customerPassword.api.js
+│       │   │   ├── customerPayment.api.js
+│       │   │   ├── customerProfile.api.js
+│       │   │   ├── customerSession.api.js
+│       │   │   ├── customerVoucher.api.js
+│       │   │   ├── OrderAPI.js
+│       │   │   ├── product.api.js
+│       │   │   └── sellerAuth.api.js
+│       │   ├── constants/
+│       │   ├── hooks/
+│       │   └── store/
+│       ├── features/
+│       │   ├── auth/
+│       │   │   └── pages/
+│       │   │       ├── ForgotPassword.jsx
+│       │   │       ├── ForgotPasswordReset.jsx
+│       │   │       ├── Login.jsx
+│       │   │       ├── Register.jsx
+│       │   │       └── SellerLogin.jsx
+│       │   ├── cart/
+│       │   │   └── pages/
+│       │   │       ├── Cart.jsx
+│       │   │       └── Checkout.jsx
+│       │   ├── community/
+│       │   │   └── pages/
+│       │   │       ├── Chat.jsx
+│       │   │       ├── CommentSection.jsx
+│       │   │       ├── Community.jsx
+│       │   │       ├── CommunityDetail.jsx
+│       │   │       └── CommunityNotifications.jsx
+│       │   ├── home/
+│       │   │   └── pages/
+│       │   │       └── Landing.jsx
+│       │   ├── order/
+│       │   │   └── pages/
+│       │   ├── product/
+│       │   │   └── pages/
+│       │   │       ├── Category.jsx
+│       │   │       ├── Dashboard.jsx
+│       │   │       ├── ProductPreview.jsx
+│       │   │       └── coba.jsx
+│       │   ├── profile/
+│       │   │   └── pages/
+│       │   │       ├── AccountAddress.jsx
+│       │   │       ├── AccountBankCards.jsx
+│       │   │       ├── AccountChangePassword.jsx
+│       │   │       ├── AccountPasswordReset.jsx
+│       │   │       ├── AccountProfile.jsx
+│       │   │       ├── Notifications.jsx
+│       │   │       ├── Orders.jsx
+│       │   │       ├── Privacy.jsx
+│       │   │       └── Vouchers.jsx
+│       │   └── support/
+│       │       └── pages/
+│       │           └── Contact.jsx
+│       ├── layouts/
+│       │   └── MainLayout.jsx
+│       └── routes/
+│           ├── ExternalRedirect.jsx
+│           └── index.jsx
+├── routes/
+│   ├── api.php
+│   ├── console.php
+│   └── web.php
+├── storage/
+├── tests/
+├── artisan
+├── composer.json
+├── package.json
+├── phpunit.xml
+├── vite.config.js
+├── jsconfig.json
+└── README.md
+```
+
+---
+
+## Preview Desain (Figma)
+https://www.figma.com/design/jhlqeUwaSG1pG9v88wX2uY/Lomba-iTech?node-id=0-1&t=4PEJuWBTtiO4bymq-1
+
+## Dokumentasi
+
