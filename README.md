@@ -50,7 +50,7 @@ Menyediakan sistem administrasi berbasis Filament yang memungkinkan Admin/Seller
 
 ---
 
-## ⚙️ Instalasi & Setup
+## Instalasi & Setup
 
 ### 1. Clone Repository
 ```bash
